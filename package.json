@@ -288,11 +288,6 @@
         "commands": [
             {
                 "category": "Python",
-                "command": "python.analysis.clearCache",
-                "title": "%python.command.python.analysis.clearCache.title%"
-            },
-            {
-                "category": "Python",
                 "command": "python.analysis.restartLanguageServer",
                 "title": "%python.command.python.analysis.restartLanguageServer.title%"
             },
@@ -335,7 +330,7 @@
                 "category": "Python",
                 "command": "python.execInTerminal-icon",
                 "icon": "$(play)",
-                "title": "%python.command.python.execInTerminal.title%"
+                "title": "%python.command.python.execInTerminalIcon.title%"
             },
             {
                 "category": "Python",
@@ -460,129 +455,22 @@
         ],
         "configuration": {
             "properties": {
-                "python.analysis.cacheFolderPath": {
-                    "description": "Path to a writable folder where analyzer can cache its data. Change requires restart.",
-                    "scope": "resource",
-                    "type": "string"
-                },
-                "python.analysis.diagnosticPublishDelay": {
-                    "default": 1000,
-                    "description": "Delay before diagnostic messages are transferred to the problems list (in milliseconds).",
-                    "scope": "resource",
-                    "type": "integer"
-                },
-                "python.analysis.disabled": {
-                    "default": [],
-                    "description": "List of suppressed diagnostic messages.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "scope": "resource",
-                    "type": "array"
-                },
-                "python.analysis.errors": {
-                    "default": [],
-                    "description": "List of diagnostics messages to be shown as errors.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "scope": "resource",
-                    "type": "array"
-                },
-                "python.analysis.information": {
-                    "default": [],
-                    "description": "List of diagnostics messages to be shown as information.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "scope": "resource",
-                    "type": "array"
-                },
-                "python.analysis.logLevel": {
-                    "default": "Error",
-                    "description": "Defines type of log messages language server writes into the output window.",
-                    "enum": [
-                        "Error",
-                        "Information",
-                        "Trace",
-                        "Warning"
-                    ],
-                    "scope": "resource",
-                    "type": "string"
-                },
-                "python.analysis.memory.keepLibraryAst": {
-                    "default": false,
-                    "description": "Allows code analysis to keep parser trees in memory. Increases memory consumption but may improve performance with large library analysis.",
-                    "scope": "resource",
-                    "type": "boolean"
-                },
-                "python.analysis.symbolsHierarchyDepthLimit": {
-                    "default": 10,
-                    "description": "Limits depth of the symbol tree in the document outline.",
-                    "scope": "resource",
-                    "type": "integer"
-                },
-                "python.analysis.typeshedPaths": {
-                    "default": [],
-                    "description": "Paths to Typeshed stub folders. Default is Typeshed installed with the language server. Change requires restart.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "scope": "resource",
-                    "type": "array"
-                },
-                "python.analysis.warnings": {
-                    "default": [],
-                    "description": "List of diagnostics messages to be shown as warnings.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "scope": "resource",
-                    "type": "array"
-                },
-                "python.autoComplete.addBrackets": {
-                    "default": false,
-                    "description": "Automatically add brackets for functions.",
-                    "scope": "resource",
-                    "type": "boolean"
-                },
                 "python.autoComplete.extraPaths": {
                     "default": [],
                     "description": "List of paths to libraries and the like that need to be imported by auto complete engine. E.g. when using Google App SDK, the paths are not in system path, hence need to be added into this list.",
                     "scope": "resource",
                     "type": "array"
                 },
-                "python.autoComplete.showAdvancedMembers": {
-                    "default": true,
-                    "description": "Controls appearance of methods with double underscores in the completion list.",
-                    "scope": "resource",
-                    "type": "boolean"
-                },
-                "python.autoComplete.typeshedPaths": {
-                    "default": [],
-                    "description": "Specifies paths to local typeshed repository clone(s) for the Python language server.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "scope": "resource",
-                    "type": "array"
-                },
-                "python.autoUpdateLanguageServer": {
-                    "default": true,
-                    "description": "Automatically update the language server.",
-                    "scope": "application",
-                    "type": "boolean"
-                },
                 "python.condaPath": {
                     "default": "",
                     "description": "Path to the conda executable to use for activation (version 4.4+).",
-                    "scope": "resource",
+                    "scope": "machine",
                     "type": "string"
                 },
                 "python.defaultInterpreterPath": {
                     "default": "python",
                     "description": "Path to Python, you can use a custom version of Python by modifying this setting to include the full path. This default setting is used as a fallback if no interpreter is selected for the workspace. The extension will also not set nor change the value of this setting, it will only read from it.",
-                    "scope": "resource",
+                    "scope": "machine-overridable",
                     "type": "string"
                 },
                 "python.diagnostics.sourceMapsEnabled": {
@@ -605,7 +493,7 @@
                 },
                 "python.experiments.enabled": {
                     "default": true,
-                    "description": "Enables/disables A/B tests.",
+                    "description": "Enables A/B tests experiments in the Python extension. If enabled, you may get included in proposed enhancements and/or features.",
                     "scope": "machine",
                     "type": "boolean"
                 },
@@ -616,8 +504,6 @@
                         "enum": [
                             "All",
                             "pythonDeprecatePythonPath",
-                            "pythonDiscoveryModule",
-                            "pythonDiscoveryModuleWithoutWatcher",
                             "pythonSurveyNotification",
                             "pythonTensorboardExperiment",
                             "pythonRunFailedTestsButtonDisplayed",
@@ -635,8 +521,6 @@
                         "enum": [
                             "All",
                             "pythonDeprecatePythonPath",
-                            "pythonDiscoveryModule",
-                            "pythonDiscoveryModuleWithoutWatcher",
                             "pythonSurveyNotification",
                             "pythonTensorboardExperiment",
                             "pythonRunFailedTestsButtonDisplayed",
@@ -718,7 +602,7 @@
                         "off",
                         "weekly"
                     ],
-                    "scope": "application",
+                    "scope": "machine",
                     "type": "string"
                 },
                 "python.languageServer": {
@@ -857,7 +741,8 @@
                     "default": [
                         "--follow-imports=silent",
                         "--ignore-missing-imports",
-                        "--show-column-numbers"
+                        "--show-column-numbers",
+                        "--no-pretty"
                     ],
                     "description": "Arguments passed in. Each argument is a separate item in the array.",
                     "items": {
@@ -1608,7 +1493,7 @@
                 "variables": {
                     "pickProcess": "python.pickLocalProcess"
                 },
-                "when": "!virtualWorkspace"
+                "when": "!virtualWorkspace && shellExecutionSupported"
             }
         ],
         "grammars": [
@@ -1710,95 +1595,89 @@
             "commandPalette": [
                 {
                     "category": "Python",
-                    "command": "python.analysis.clearCache",
-                    "title": "%python.command.python.analysis.clearCache.title%",
-                    "when": "!virtualWorkspace"
-                },
-                {
-                    "category": "Python",
                     "command": "python.analysis.restartLanguageServer",
                     "title": "%python.command.python.analysis.restartLanguageServer.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.clearPersistentStorage",
                     "title": "%python.command.python.clearPersistentStorage.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.clearWorkspaceInterpreter",
                     "title": "%python.command.python.clearWorkspaceInterpreter.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.configureTests",
                     "title": "%python.command.python.configureTests.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.createTerminal",
                     "title": "%python.command.python.createTerminal.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.enableLinting",
                     "title": "%python.command.python.enableLinting.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.enableSourceMapSupport",
                     "title": "%python.command.python.enableSourceMapSupport.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.execInTerminal",
                     "title": "%python.command.python.execInTerminal.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.execInTerminal-icon",
                     "icon": "$(play)",
-                    "title": "%python.command.python.execInTerminal.title%",
-                    "when": "!virtualWorkspace"
+                    "title": "%python.command.python.execInTerminalIcon.title%",
+                    "when": "false"
                 },
                 {
                     "category": "Python",
                     "command": "python.debugInTerminal",
                     "icon": "$(debug-alt)",
                     "title": "%python.command.python.debugInTerminal.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.execSelectionInDjangoShell",
                     "title": "%python.command.python.execSelectionInDjangoShell.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.execSelectionInTerminal",
                     "title": "%python.command.python.execSelectionInTerminal.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.goToPythonObject",
                     "title": "%python.command.python.goToPythonObject.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.launchTensorBoard",
                     "title": "%python.command.python.launchTensorBoard.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
@@ -1806,14 +1685,14 @@
                     "enablement": "python.hasActiveTensorBoardSession",
                     "icon": "$(refresh)",
                     "title": "%python.command.python.refreshTensorBoard.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Test",
                     "command": "python.refreshTests",
                     "icon": "$(refresh)",
                     "title": "%python.command.python.refreshTests.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Test",
@@ -1823,166 +1702,166 @@
                         "light": "resources/light/discovering-tests.svg"
                     },
                     "title": "%python.command.python.refreshingTests.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Test",
                     "command": "python.stopRefreshingTests",
                     "icon": "$(stop-circle)",
                     "title": "%python.command.python.stopRefreshingTests.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.reportIssue",
                     "title": "%python.command.python.reportIssue.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Test",
                     "command": "testing.reRunFailTests",
                     "icon": "$(run-errors)",
                     "title": "%python.command.testing.rerunFailedTests.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.runLinting",
                     "title": "%python.command.python.runLinting.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.setInterpreter",
                     "title": "%python.command.python.setInterpreter.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.setLinter",
                     "title": "%python.command.python.setLinter.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python Refactor",
                     "command": "python.sortImports",
                     "title": "%python.command.python.sortImports.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.startREPL",
                     "title": "%python.command.python.startREPL.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.viewLanguageServerOutput",
                     "enablement": "python.hasLanguageServerOutputChannel",
                     "title": "%python.command.python.viewLanguageServerOutput.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.clearWorkspaceInterpreter",
                     "title": "%python.command.python.clearWorkspaceInterpreter.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.switchOffInsidersChannel",
                     "title": "%python.command.python.switchOffInsidersChannel.title%",
-                    "when": "config.python.insidersChannel != 'default' && !virtualWorkspace"
+                    "when": "config.python.insidersChannel != 'default' && !virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.switchToDailyChannel",
                     "title": "%python.command.python.switchToDailyChannel.title%",
-                    "when": "config.python.insidersChannel != 'daily' && !virtualWorkspace"
+                    "when": "config.python.insidersChannel != 'daily' && !virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.switchToWeeklyChannel",
                     "title": "%python.command.python.switchToWeeklyChannel.title%",
-                    "when": "config.python.insidersChannel != 'weekly' && !virtualWorkspace"
+                    "when": "config.python.insidersChannel != 'weekly' && !virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "category": "Python",
                     "command": "python.viewOutput",
                     "title": "%python.command.python.viewOutput.title%",
-                    "when": "!virtualWorkspace"
+                    "when": "!virtualWorkspace && shellExecutionSupported"
                 }
             ],
             "editor/context": [
                 {
                     "command": "python.execInTerminal",
                     "group": "Python",
-                    "when": "resourceLangId == python && !virtualWorkspace"
+                    "when": "resourceLangId == python && !virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "command": "python.execSelectionInDjangoShell",
                     "group": "Python",
-                    "when": "editorHasSelection && editorLangId == python && python.isDjangoProject && !virtualWorkspace"
+                    "when": "editorHasSelection && editorLangId == python && python.isDjangoProject && !virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "command": "python.execSelectionInTerminal",
                     "group": "Python",
-                    "when": "editorFocus && editorLangId == python && !virtualWorkspace"
+                    "when": "editorFocus && editorLangId == python && !virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "command": "python.sortImports",
                     "group": "Refactor",
                     "title": "Refactor: Sort Imports",
-                    "when": "editorLangId == python && !notebookEditorFocused && !virtualWorkspace"
+                    "when": "editorLangId == python && !notebookEditorFocused && !virtualWorkspace && shellExecutionSupported"
                 }
             ],
             "editor/title": [
                 {
                     "command": "python.refreshTensorBoard",
                     "group": "navigation@0",
-                    "when": "python.hasActiveTensorBoardSession && !virtualWorkspace"
+                    "when": "python.hasActiveTensorBoardSession && !virtualWorkspace && shellExecutionSupported"
                 }
             ],
             "editor/title/run": [
                 {
                     "command": "python.execInTerminal-icon",
                     "group": "navigation@0",
-                    "title": "%python.command.python.execInTerminal.title%",
-                    "when": "resourceLangId == python && !isInDiffEditor && !virtualWorkspace"
+                    "title": "%python.command.python.execInTerminalIcon.title%",
+                    "when": "resourceLangId == python && !isInDiffEditor && !virtualWorkspace && shellExecutionSupported"
                 },
                 {
                     "command": "python.debugInTerminal",
                     "group": "navigation@1",
                     "title": "%python.command.python.debugInTerminal.title%",
-                    "when": "resourceLangId == python && !isInDiffEditor && !virtualWorkspace"
+                    "when": "resourceLangId == python && !isInDiffEditor && !virtualWorkspace && shellExecutionSupported"
                 }
             ],
             "explorer/context": [
                 {
                     "command": "python.execInTerminal",
                     "group": "Python",
-                    "when": "resourceLangId == python && !virtualWorkspace"
+                    "when": "resourceLangId == python && !virtualWorkspace && shellExecutionSupported"
                 }
             ],
             "view/title": [
                 {
                     "command": "python.refreshTests",
-                    "when": "view == workbench.view.testing && !refreshingTests && inShowRefreshingTestsExperiment && !virtualWorkspace",
+                    "when": "view == workbench.view.testing && !refreshingTests && inShowRefreshingTestsExperiment && !virtualWorkspace && shellExecutionSupported",
                     "group": "navigation@0"
                 },
                 {
                     "command": "python.refreshingTests",
-                    "when": "view == workbench.view.testing && refreshingTests && inShowRefreshingTestsExperiment && !virtualWorkspace",
+                    "when": "view == workbench.view.testing && refreshingTests && inShowRefreshingTestsExperiment && !virtualWorkspace && shellExecutionSupported",
                     "group": "navigation@0"
                 },
                 {
                     "command": "python.stopRefreshingTests",
-                    "when": "view == workbench.view.testing && refreshingTests && inShowRefreshingTestsExperiment && !virtualWorkspace",
+                    "when": "view == workbench.view.testing && refreshingTests && inShowRefreshingTestsExperiment && !virtualWorkspace && shellExecutionSupported",
                     "group": "navigation@0"
                 },
                 {
                     "command": "testing.reRunFailTests",
-                    "when": "view == workbench.view.testing && hasFailedTests && inShowRunFailedTestsExperiment && !virtualWorkspace",
+                    "when": "view == workbench.view.testing && hasFailedTests && inShowRunFailedTestsExperiment && !virtualWorkspace && shellExecutionSupported",
                     "group": "navigation@1"
                 }
             ]
@@ -1991,7 +1870,7 @@
             {
                 "view": "testing",
                 "contents": "Configure a test framework to see your tests here.\n[Configure Python Tests](command:python.configureTests)",
-                "when": "!virtualWorkspace"
+                "when": "!virtualWorkspace && shellExecutionSupported"
             }
         ],
         "yamlValidation": [
@@ -2046,7 +1925,7 @@
         "webpack": "webpack"
     },
     "dependencies": {
-        "@vscode/jupyter-lsp-middleware": "^0.2.5",
+        "@vscode/jupyter-lsp-middleware": "^0.2.15",
         "arch": "^2.1.0",
         "azure-storage": "^2.10.4",
         "chokidar": "^3.4.3",
@@ -2061,7 +1940,6 @@
         "md5": "^2.2.1",
         "minimatch": "^3.0.4",
         "named-js-regexp": "^1.3.3",
-        "node-fetch": "^2.6.1",
         "node-stream-zip": "^1.6.0",
         "reflect-metadata": "^0.1.12",
         "request": "^2.87.0",
@@ -2088,7 +1966,6 @@
         "xml2js": "^0.4.19"
     },
     "devDependencies": {
-        "@enonic/fnv-plus": "^1.3.0",
         "@istanbuljs/nyc-config-typescript": "^0.1.3",
         "@types/chai": "^4.1.2",
         "@types/chai-arrays": "^1.0.2",
@@ -2143,10 +2020,6 @@
         "mocha": "^8.1.1",
         "mocha-junit-reporter": "^1.17.0",
         "mocha-multi-reporters": "^1.1.7",
-        "monaco-editor": "0.18.1",
-        "monaco-editor-textmate": "^2.2.1",
-        "monaco-editor-webpack-plugin": "^1.7.0",
-        "monaco-textmate": "^3.0.1",
         "nock": "^10.0.6",
         "node-has-native-dependencies": "^1.0.2",
         "node-loader": "^1.0.2",
@@ -2175,7 +2048,6 @@
         "webpack-merge": "^4.1.4",
         "webpack-node-externals": "^1.7.2",
         "webpack-require-from": "^1.8.0",
-        "why-is-node-running": "^2.0.3",
         "yargs": "^15.3.1"
     },
     "__metadata": {
