@@ -20,7 +20,7 @@
     "python.snippet.launch.flask.label": "Python: Flask",
     "python.snippet.launch.pyramid.label": "Python: Pyramid 程式",
     "python.snippet.launch.attach.label": "Python: 附加",
-    "python.snippet.launch.attachpid.label": "Python: 使用處理程序 ID 附加",
+    "python.snippet.launch.attachpid.label": "Python: 使用 PID 附加",
     "Pylance.remindMeLater": "稍後提醒",
     "Pylance.pylanceNotInstalledMessage": "Pylance 延伸模組未安裝。",
     "Pylance.pylanceInstalledReloadPromptMessage": "Pylance 延伸模組已安裝。重新載入視窗以啟用？",
